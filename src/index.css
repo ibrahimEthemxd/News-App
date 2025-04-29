@@ -1,0 +1,58 @@
+/* Renk Paleti */
+:root {
+    --color-primary: #f04e30;
+    --color-secondary: #222;
+    --color-text: #ffffff;
+    --color-bg: #fff;
+    --color-hover: #ff7a59;
+    --color-muted: #aaaaaa;
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --transition-default: all 0.3s ease-in-out;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    padding-top: 130px;
+  }
+  
+  a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: var(--transition-default);
+  }
+  
+  a:hover {
+    color: var(--color-hover);
+  }
+  
+  button {
+    font-family: var(--font-main);
+    transition: var(--transition-default);
+    cursor: pointer;
+  }
+  
+  input, button {
+    outline: none;
+  }
+  
+  img {
+    max-width: 100%;
+    display: block;
+  }
+  
+  /* Reusable utility classes */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
