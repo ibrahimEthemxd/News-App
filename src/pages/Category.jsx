@@ -162,46 +162,42 @@ const Category = () => {
             </div>
           ) : (
             <>
-              {currentArticles.map((article, index) => (
-                <div key={index} className="news-item">
-                  <a
-                    href={article.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src={article.urlToImage || "/default-image.jpg"}
-                      alt="news"
-                      className="news-image"
-                    />
-                  </a>
+              {currentArticles.length === 0 ? (
+                <div className="no-results">
+                  <h3>No results found for your filter criteria..!</h3>
+                </div>
+              ) : (
+                currentArticles.map((article, index) => (
+                  <div key={index} className="news-item">
+                    <a
+                      href={article.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src={article.urlToImage || "/default-image.jpg"}
+                        alt="news"
+                        className="news-image"
+                      />
+                    </a>
 
-                  <div className="news-content">
-                    <h3>{article.title || "Dargınım gözlerine "}</h3>
-                    <p>
-                      {article.description ||
-                        "Sabret doğacaktır. Elbet güneş :D"}
-                    </p>
-                    <div className="news-meta">
-                      <span>
-                        🗓️ {new Date(article.publishedAt).toLocaleDateString()}
-                      </span>
-                      <span>✍️ {article.author || "İbrahim Ethem Öztürk"}</span>
-                      <span>👁️ {article.views || 6127} views</span>
-                      {/* <div className="news-footer">
-                        <a
-                          href={article.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="read-more-btn"
-                        >
-                          Daha Fazlası →
-                        </a>
-                      </div> */}
+                    <div className="news-content">
+                      <h3>{article.title || "Dargınım gözlerine "}</h3>
+                      <p>
+                        {article.description ||
+                          "Sabret doğacaktır. Elbet güneş :D"}
+                      </p>
+                      <div className="news-meta">
+                        <span>
+                          🗓️ {new Date(article.publishedAt).toLocaleDateString()}
+                        </span>
+                        <span>✍️ {article.author || "İbrahim Ethem Öztürk"}</span>
+                        <span>👁️ {article.views || 6127} views</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))
+              )}
 
               <Pagination
                 currentPage={currentPage}

@@ -1,8 +1,8 @@
-// src/pages/Search.jsx
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 import NewsList from "../components/NewsList";
+import { ClipLoader } from "react-spinners";
 
 const Search = () => {
   const [searchParams] = useSearchParams();
@@ -42,6 +42,7 @@ const Search = () => {
   const handlePageChange = (page) => {
     if (page > 0 && page <= totalPages) {
       setCurrentPage(page);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -63,7 +64,11 @@ const Search = () => {
         </div>
       )}
 
-      {loading && <p>Loading...</p>}
+      {loading && (
+        <div className="spinner-container">
+          <ClipLoader color="#f04e30" loading={loading} size={50} style={{ textAlign: "center" }} />
+        </div>
+      )}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-const API_KEY = '676f017549224f488970f1835f9db971';
+const API_KEY = '676f017549224f488970f1835f9db971'; // aşırı yüklenmeden error verdi değiştirdim...
 const BASE_URL = 'https://newsapi.org/v2/top-headlines';
 
 export const fetchNews = async (params = {}) => {

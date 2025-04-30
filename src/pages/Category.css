@@ -1,5 +1,3 @@
-/* Category.css */
-
 .category-page {
     display: flex;
     gap: 2rem;
@@ -151,5 +149,8 @@
   
   .read-more-btn:hover {
     background-color: #0056b3;
+  }
+  .no-results{
+    color: var(--color-primary);
   }
   
