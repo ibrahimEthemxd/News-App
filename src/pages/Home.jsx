@@ -1,10 +1,9 @@
-// src/pages/Home.jsx
 import { useEffect, useState } from "react";
 import axios from "axios";
 import NewsSlider from "../components/NewsSlider";
 import NewsList from "../components/NewsList";
 import Pagination from "../components/Pagination";
-
+import ClipLoader from "react-spinners/ClipLoader";
 const Home = () => {
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -43,18 +42,21 @@ const Home = () => {
 
   return (
     <div>
-      <NewsSlider articles={articles.slice(0, 3)} />
-      <NewsList articles={articles.slice(3)} />
-
-      {!loading && (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={(page) => setCurrentPage(page)}
-        />
+      {loading ? (
+        <div style={{ textAlign: "center", padding: "50px" }}>
+          <ClipLoader color="#f04e30" loading={true} size={50} />
+        </div>
+      ) : (
+        <>
+          <NewsSlider articles={articles.slice(0, 3)} />
+          <NewsList articles={articles.slice(3)} />
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </>
       )}
-
-      {loading && <p>Loading...</p>}
     </div>
   );
 };

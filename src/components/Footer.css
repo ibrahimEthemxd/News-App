@@ -54,4 +54,12 @@
     font-size: 0.85rem;
     color: #999;
   }
+  .footer-about{
+    padding: 10px 40px;
+  }
+  @media (max-width: 660px) {
+   .footer-about{
+    text-align: center;
+   }
+  }
   

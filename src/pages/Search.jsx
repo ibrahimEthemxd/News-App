@@ -47,8 +47,6 @@ const Search = () => {
 
   return (
     <div>
-      <h2>Arama Sonuçları: "{query}"</h2>
-
       <NewsList articles={articles} />
 
       {!loading && (

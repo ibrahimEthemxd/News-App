@@ -1,10 +1,10 @@
-// src/components/NewsSlider.jsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './NewsSlider.css';
 
 const NewsSlider = ({ articles }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Slaytlar arasında geçiş yapmak için next ve prev fonksiyonları
   const nextSlide = () => {
     if (currentIndex < articles.length - 1) {
       setCurrentIndex(currentIndex + 1);
@@ -21,6 +21,19 @@ const NewsSlider = ({ articles }) => {
     }
   };
 
+  // Slaytları otomatik olarak değiştirmek için setInterval kullanıyoruz
+  useEffect(() => {
+    const interval = setTimeout(nextSlide, 5000); // Her 5 saniyede bir slayt değişir
+
+    // Interval temizleme
+    return () => clearTimeout(interval);
+  }, [currentIndex]); // currentIndex değiştikçe tekrar çalışacak
+
+  // Küçük noktalar için tıklama ile slayda geçiş
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+  };
+
   return (
     <div className="news-slider">
       {articles.length > 0 && (
@@ -35,8 +48,21 @@ const NewsSlider = ({ articles }) => {
           </div>
         </div>
       )}
+
+      {/* Slider kontrol butonları */}
       <button className="prev btn" onClick={prevSlide}>❮</button>
       <button className="next btn" onClick={nextSlide}>❯</button>
+
+      {/* Küçük noktalar */}
+      <div className="slider-dots">
+        {articles.map((_, index) => (
+          <span
+            key={index}
+            className={`dot ${index === currentIndex ? 'active' : ''}`}
+            onClick={() => goToSlide(index)}
+          ></span>
+        ))}
+      </div>
     </div>
   );
 };
